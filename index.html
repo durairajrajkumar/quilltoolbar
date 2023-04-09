@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.quilljs.com/1.1.3/quill.js"></script>
+    <script src="https://cdn.quilljs.com/1.1.3/quill.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<!-- Theme included stylesheets -->
+<link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="toolbar"></div>
+<div id="editor"></div>
+<button id="saveDelta">Save Delta</button>
+<script>
+
+    var toolbarOptions = [
+    ['bold','italic','underline','strike'],
+    ['blockquote','code-block'],
+    [{'header': [1,2,3,4,5,6, false] }],
+    [{ 'header': 1 }, { 'header': 2 }],
+    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+    [{ 'script':'sub'},{ 'script':'super' }],
+    [{ 'indent':'-1'},{'indent':'+1'}],
+    [{'direction':'rtl'}],
+    [{'size': ['small', false, 'large', 'huge'] }],
+    ['link','image','video','formula'],
+    [{'color': []},{'background': [] }],
+    [{'font':[]}],
+    [{'align': []}],
+    ];
+
+var quill = new Quill('#editor', {
+    modules: {
+           toolbar: toolbarOptions
+    },
+    theme: 'snow'
+    });
+
+$('#saveDelta').click(function(){
+
+    var delta = quill.getContents();
+    window.delta = quill.getContents();
+        
+})
+
+</script>
+
+</body>
+
+
+</html>
